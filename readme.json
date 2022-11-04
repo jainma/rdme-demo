@@ -57,7 +57,7 @@
     "/api-registry/{uuid}": {
       "get": {
         "operationId": "getAPIRegistry",
-        "summary": "Retrieve an entry from the API Registry",
+        "summary": "Retrieve an entry from the API Registry Modify",
         "description": "Get an API definition file that's been uploaded to ReadMe",
         "tags": ["API Registry"],
         "parameters": [

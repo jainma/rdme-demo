@@ -27,4 +27,4 @@ jobs:
         # Docs: https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions#example-using-versioned-actions
         uses: readmeio/rdme@8.0.2
         with:
-          rdme: docs ./getting-started.markdown --key=rdme_xn8s9h8b348128bce9b863032bec12f229cccc4f24c1b259729fae0df5667dbec8d028 --version=2.0
+          rdme: docs ./getting-started.markdown --key=rdme_xn8s9h8b348128bce9b863032bec12f229cccc4f24c1b259729fae0df5667dbec8d028 --version=1.0

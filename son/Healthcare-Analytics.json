@@ -1,0 +1,2494 @@
+{
+  "swagger" : "2.0", 
+  "produces" : null, 
+  "host" : "", 
+  "info" : {
+    "description" : "Rest APIs", 
+    "title" : "Rest APIs", 
+    "version" : "1.0"
+  }, 
+  "basePath" : "/", 
+  "tags" : [ {
+    "description" : "<p markdown=\"1\">From here you may browse our library of API resources, organized hierarchically by domain, or major functional area, logical subgroup, API resource, and all available operations against that resource. For more information about the concepts and technology behind our API, refer to the [Getting started](C:636f581c-50a8-41a7-af43-e5057f9c20bd) documentation.</p><p>Our platform provides a powerful application programming interface and documentation to help you develop secure, scalable, and high-performance applications that leverage the full breadth of capabilities offered by our backend services.</p><p markdown=\"1\">The Workforce Management suite's API is founded on a pragmatic implementation of the [representational state transfer](http://en.wikipedia.org/wiki/Representational_State_Transfer) architectural style and allows access to your organization's workforce management data using common HTTP methods and the [JSON](http://www.json.org) interchange format.</p>", 
+    "name" : "API"
+  }, {
+    "description" : "This resource allows you to retrieve and manipulate billing department and work unit maps.", 
+    "name" : "Billing Department and Work Unit Maps", 
+    "x-parent" : "Healthcare Analytics"
+  }, {
+    "description" : "This resource allows you to retrieve and manipulate charge masters for Healthcare Analytics.", 
+    "name" : "Charge Masters", 
+    "x-parent" : "Healthcare Analytics"
+  }, {
+    "description" : "<p>Workforce Analytics for Healthcare enables authorized users to measure and manage daily and pay period productivity by performing analysis based on data from a facility’s billing and payroll systems, its supplemental labor records, and the workforce data stored in Dimensions. HCA provides dynamic and interactive reporting capabilities that apply productivity targets to this data, as well as mechanisms for defining limits for key performance indicators (KPI), detecting acceptable and unacceptable variances of these limits, and generating requests for responses from responsible individuals.</p>", 
+    "name" : "Healthcare Analytics", 
+    "x-parent" : "API"
+  }, {
+    "description" : "<p>This resource allows you to transform raw payroll data into enriched payroll data.</p>", 
+    "name" : "Payroll Data Enrichment", 
+    "x-parent" : "Healthcare Analytics"
+  }, {
+    "description" : "<p>This resource provides a set of operations that allow you to retrieve and manipulate payroll department to work unit maps.</p>", 
+    "name" : "Payroll Department to Work Unit Maps", 
+    "x-parent" : "Healthcare Analytics"
+  }, {
+    "description" : "<p>This resource provides a set of operations that allow you to retrieve and manipulate payroll employment status to Analytics labor type maps.</p>", 
+    "name" : "Payroll Employment Status to Labor Type Maps", 
+    "x-parent" : "Healthcare Analytics"
+  }, {
+    "description" : "<p>This resource provides a set of operations that allow you to retrieve and manipulate payroll department maps.</p>", 
+    "name" : "Payroll Job Maps", 
+    "x-parent" : "Healthcare Analytics"
+  }, {
+    "description" : "This resource allows you to retrieve and manipulate raw volume for Healthcare Analytics.", 
+    "name" : "Raw Volume", 
+    "x-parent" : "Healthcare Analytics"
+  }, {
+    "description" : "This resource allows you to retrieve and manipulate volume copy maps for Healthcare Analytics.", 
+    "name" : "Volume Copy Maps", 
+    "x-parent" : "Healthcare Analytics"
+  }, {
+    "description" : "This resource allows you to retrieve and manipulate volume copy override maps.", 
+    "name" : "Volume Copy Override Maps", 
+    "x-parent" : "Healthcare Analytics"
+  }, {
+    "description" : "This resource allows you to retrieve volume process status. This is normally used by Healthcare to import daily transactional volume that processes and computes metric-level data. The Reporting system also makes use of volume process data. Volume process data consists of allocated or weighted volume.", 
+    "name" : "Volume Process Status", 
+    "x-parent" : "Healthcare Analytics"
+  }, {
+    "description" : "This resource allows you to recalculate volume data.", 
+    "name" : "Volume Recalculation", 
+    "x-parent" : "Healthcare Analytics"
+  }, {
+    "description" : "This resource allows you to retrieve and manipulate work unit Hyperfind Profiles.", 
+    "name" : "Work Unit Hyperfind Profiles", 
+    "x-parent" : "Healthcare Analytics"
+  }, {
+    "description" : "This resource allows you to retrieve and manipulate work unit Hyperfinds.", 
+    "name" : "Work Unit Hyperfinds", 
+    "x-parent" : "Healthcare Analytics"
+  }, {
+    "description" : "This resource allows you to retrieve location details about Work Units, Healthcare Targets, and Symbolic Time Periods.", 
+    "name" : "Work Unit Locations", 
+    "x-parent" : "Healthcare Analytics"
+  }, {
+    "description" : "<p>This resource allows you to retrieve and manipulate work units.</p><p>Work units are user-defined entities that can exist at any level of an organization, from a group of similar jobs in a department to divisions across enterprises. Examples of work units include:</p><br /><ul><li>Pharmacy</li><li>Cardiac Care</li><li>Radiology X-Ray</li><li>Radiology MRI</li></ul>", 
+    "name" : "Work Units", 
+    "x-parent" : "Healthcare Analytics"
+  } ], 
+  "paths" : {
+    "/v1/commons/work_units" : {
+      "get" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation returns all work units and includes pagination support with the optional parameters start, index, and count.", 
+        "operationId" : "Retrieve All Work Units", 
+        "parameters" : [ {
+          "description" : "The pagination index, which represents the particular page of work units to return in the response.", 
+          "format" : "int32", 
+          "in" : "query", 
+          "name" : "index", 
+          "required" : false, 
+          "type" : "integer"
+        }, {
+          "description" : "The pagination count, which represents the number of work units to return per page. This parameter is optional and has no upper limit.", 
+          "format" : "int32", 
+          "in" : "query", 
+          "name" : "count", 
+          "required" : false, 
+          "type" : "integer"
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/AnalyticsWorkUnitDTO"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "400" : {
+            "description" : "Bad Request."
+          }, 
+          "404" : {
+            "description" : "Not Found."
+          }
+        }, 
+        "summary" : "Returns all work units.", 
+        "tags" : [ "Work Units" ]
+      }
+    }, 
+    "/v1/commons/work_units/locations/apply_read" : {
+      "post" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation retrieves the details of the given Work Units, definitions of the given Healthcare Targets, pay period date spans and days of operation of the given symbolic time periods or date range.", 
+        "operationId" : "Retrieve Work Unit Locations", 
+        "parameters" : [ {
+          "in" : "body", 
+          "name" : "body", 
+          "required" : false, 
+          "schema" : {
+            "$ref" : "#/definitions/WorkUnitTraversalRequest"
+          }
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/WorkUnitTraversalResponseItem"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "400" : {
+            "description" : "Incorrect Request Parameter/Invalid Request Body."
+          }, 
+          "404" : {
+            "description" : "Not Found."
+          }
+        }, 
+        "summary" : "Retrieve details for the given Work Units, Healthcare Targets and Symbolic Time Periods.", 
+        "tags" : [ "Work Unit Locations" ]
+      }
+    }, 
+    "/v1/commons/work_units/multi_upsert" : {
+      "post" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation creates or updates one or more work units.", 
+        "operationId" : "Create or Update Work Units", 
+        "parameters" : [ {
+          "description" : "The Create or Update Work Units request payload.", 
+          "in" : "body", 
+          "name" : "body", 
+          "required" : true, 
+          "schema" : {
+            "items" : {
+              "$ref" : "#/definitions/AnalyticsWorkUnitDTO"
+            }, 
+            "type" : "array"
+          }
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/AnalyticsWorkUnitDTO"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "400" : {
+            "description" : "Incorrect Request Parameter/Invalid Request Body."
+          }, 
+          "404" : {
+            "description" : "Validation messages."
+          }
+        }, 
+        "summary" : "Creates or updates one or more work units.", 
+        "tags" : [ "Work Units" ]
+      }
+    }, 
+    "/v1/hca/payroll/apply_read" : {
+      "post" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation transforms raw payroll data into enriched payroll data.", 
+        "operationId" : "Enrich Payroll Data", 
+        "parameters" : [ {
+          "in" : "body", 
+          "name" : "body", 
+          "required" : false, 
+          "schema" : {
+            "items" : {
+              "$ref" : "#/definitions/PayrollDataEnricher"
+            }, 
+            "type" : "array"
+          }
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/PayrollDataEnricher"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "400" : {
+            "description" : "Incorrect Request Parameter/Invalid Request Body."
+          }, 
+          "404" : {
+            "description" : "The requested resource cannot be found."
+          }
+        }, 
+        "summary" : "Enriches payroll data.", 
+        "tags" : [ "Payroll Data Enrichment" ]
+      }
+    }, 
+    "/v1/hca/payroll/department_maps" : {
+      "get" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation returns a filtered list of all payroll department to work unit maps. Search terms include delete switch, index, and count. The count query parameter has no upper limit.", 
+        "operationId" : "Retrieve Payroll Department to Work Unit Maps", 
+        "parameters" : [ {
+          "in" : "query", 
+          "name" : "delete_switch", 
+          "required" : false, 
+          "type" : "string"
+        }, {
+          "in" : "query", 
+          "name" : "index", 
+          "required" : false, 
+          "type" : "string"
+        }, {
+          "in" : "query", 
+          "name" : "count", 
+          "required" : false, 
+          "type" : "string"
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "$ref" : "#/definitions/PaginationResponseDTO"
+            }
+          }, 
+          "400" : {
+            "description" : "Incorrect Request Parameter/Invalid Request Body."
+          }, 
+          "404" : {
+            "description" : "The requested resource cannot be found."
+          }
+        }, 
+        "summary" : "Returns a filtered list of all payroll department to work unit maps.", 
+        "tags" : [ "Payroll Department to Work Unit Maps" ]
+      }
+    }, 
+    "/v1/hca/payroll/department_maps/multi_upsert" : {
+      "post" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation creates or updates payroll department to work unit maps.", 
+        "operationId" : "Create or Update Payroll Department to Work Unit Maps", 
+        "parameters" : [ {
+          "in" : "body", 
+          "name" : "body", 
+          "required" : false, 
+          "schema" : {
+            "items" : {
+              "$ref" : "#/definitions/PayrollDeptWUMap"
+            }, 
+            "type" : "array"
+          }
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/PayrollDeptWUMap"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "400" : {
+            "description" : "Incorrect Request Parameter/Invalid Request Body."
+          }, 
+          "404" : {
+            "description" : "The requested resource cannot be found."
+          }
+        }, 
+        "summary" : "Creates or updates payroll department to work unit maps.", 
+        "tags" : [ "Payroll Department to Work Unit Maps" ]
+      }
+    }, 
+    "/v1/hca/payroll/employment_status_maps" : {
+      "get" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation returns a filtered list of all payroll employment status to labor type maps. Search terms include delete switch, index, and count. The count query parameter has no upper limit.", 
+        "operationId" : "Retrieve Payroll Employment Status to Labor Type Maps", 
+        "parameters" : [ {
+          "in" : "query", 
+          "name" : "delete_switch", 
+          "required" : false, 
+          "type" : "string"
+        }, {
+          "in" : "query", 
+          "name" : "index", 
+          "required" : false, 
+          "type" : "string"
+        }, {
+          "in" : "query", 
+          "name" : "count", 
+          "required" : false, 
+          "type" : "string"
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "$ref" : "#/definitions/PaginationResponseDTO"
+            }
+          }, 
+          "400" : {
+            "description" : "Incorrect Request Parameter/Invalid Request Body."
+          }, 
+          "404" : {
+            "description" : "The requested resource cannot be found."
+          }
+        }, 
+        "summary" : "Returns a filtered list of all payroll employment status to labor type maps.", 
+        "tags" : [ "Payroll Employment Status to Labor Type Maps" ]
+      }
+    }, 
+    "/v1/hca/payroll/employment_status_maps/multi_upsert" : {
+      "post" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation creates or updates payroll employment status to labor type maps.", 
+        "operationId" : "Create or Update Payroll Employment Status to Labor Type Maps", 
+        "parameters" : [ {
+          "description" : "The Create or Update Payroll Employment Status to Labor Type Maps request payload.", 
+          "in" : "body", 
+          "name" : "body", 
+          "required" : false, 
+          "schema" : {
+            "items" : {
+              "$ref" : "#/definitions/Payroll Employment Status Labor Type Map"
+            }, 
+            "type" : "array"
+          }
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/Payroll Employment Status Labor Type Map"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "207" : {
+            "description" : "Partial Success.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/Payroll Employment Status Labor Type Map"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "400" : {
+            "description" : "Incorrect Request Parameter/Invalid Request Body."
+          }, 
+          "404" : {
+            "description" : "The requested resource cannot be found."
+          }
+        }, 
+        "summary" : "Creates or updates payroll employment status to labor type maps.", 
+        "tags" : [ "Payroll Employment Status to Labor Type Maps" ]
+      }
+    }, 
+    "/v1/hca/payroll/job_maps" : {
+      "get" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation returns a filtered list of all payroll job maps. Search terms include delete switch, index, and count. The count query parameter has no upper limit.", 
+        "operationId" : "Retrieve Payroll Job Maps", 
+        "parameters" : [ {
+          "in" : "query", 
+          "name" : "delete_switch", 
+          "required" : false, 
+          "type" : "string"
+        }, {
+          "in" : "query", 
+          "name" : "index", 
+          "required" : false, 
+          "type" : "string"
+        }, {
+          "in" : "query", 
+          "name" : "count", 
+          "required" : false, 
+          "type" : "string"
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "$ref" : "#/definitions/PaginationResponseDTO"
+            }
+          }, 
+          "400" : {
+            "description" : "Incorrect Request Parameter/Invalid Request Body."
+          }, 
+          "404" : {
+            "description" : "The requested resource cannot be found."
+          }
+        }, 
+        "summary" : "Returns a filtered list of all payroll job maps.", 
+        "tags" : [ "Payroll Job Maps" ]
+      }
+    }, 
+    "/v1/hca/payroll/job_maps/multi_upsert" : {
+      "post" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation creates or updates payroll job maps.", 
+        "operationId" : "Create or Update Payroll Job Maps", 
+        "parameters" : [ {
+          "in" : "body", 
+          "name" : "body", 
+          "required" : false, 
+          "schema" : {
+            "items" : {
+              "$ref" : "#/definitions/PayrollJobGenericJobMap"
+            }, 
+            "type" : "array"
+          }
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/PayrollJobGenericJobMap"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "400" : {
+            "description" : "Incorrect Request Parameter/Invalid Request Body."
+          }, 
+          "404" : {
+            "description" : "The requested resource cannot be found."
+          }
+        }, 
+        "summary" : "Ceates or updates payroll job maps.", 
+        "tags" : [ "Payroll Job Maps" ]
+      }
+    }, 
+    "/v1/hca/volume/billing_department_maps" : {
+      "get" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "<p>This operation returns all of the maps between billing departments and work units. Pagination support is included for large responses.</p><br /><p>The associated Access Control Point is as follows:</p><ul><li><strong>ACP Key:</strong> HEALTHCARE_ANALYTICS</li><li><strong>API Access Controlled By:</strong> Edit</li><li><strong>Default Value:</strong> Disallowed</li><li><strong>Location in the Dimensions UI:</strong> Manager - System Configuration > KPI > Builder - Setup Configuration > Healthcare Analytics</li></ul>", 
+        "operationId" : "Retrieve All Billing Department and Work Unit Maps", 
+        "parameters" : [ {
+          "description" : "The Delete Switch enables soft delete.", 
+          "in" : "query", 
+          "name" : "deleteSwitch", 
+          "required" : false, 
+          "type" : "string"
+        }, {
+          "in" : "query", 
+          "name" : "index", 
+          "required" : false, 
+          "type" : "string"
+        }, {
+          "in" : "query", 
+          "name" : "count", 
+          "required" : false, 
+          "type" : "string"
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success."
+          }, 
+          "400" : {
+            "description" : "Billing Department and Work Unit mapping does not exists."
+          }
+        }, 
+        "summary" : "Returns all of the maps between billing departments and work units.", 
+        "tags" : [ "Billing Department and Work Unit Maps" ]
+      }
+    }, 
+    "/v1/hca/volume/billing_department_maps/multi_upsert" : {
+      "post" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "<p>This operation creates or updates billing department and work unit maps. The Delete Switch can be updated based on the unique combination of billing department and work unit.</p><br /><p>The associated Access Control Point is as follows:</p><ul><li><strong>ACP Key:</strong> HEALTHCARE_ANALYTICS</li><li><strong>API Access Controlled By:</strong> Edit</li><li><strong>Default Value:</strong> Disallowed</li><li><strong>Location in the Dimensions UI:</strong> Manager - System Configuration > KPI > Builder - Setup Configuration > Healthcare Analytics</li></ul>", 
+        "operationId" : "Create or Update Billing Department and Work Unit Maps", 
+        "parameters" : [ {
+          "description" : "The Create or Update Billing Department and Work Unit Mappings request payload.", 
+          "in" : "body", 
+          "name" : "body", 
+          "required" : true, 
+          "schema" : {
+            "items" : {
+              "$ref" : "#/definitions/BillingDepartmentAndWorkUnitMapping"
+            }, 
+            "type" : "array"
+          }
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Successfully created list of Billing Department and Work Unit mapping"
+          }, 
+          "207" : {
+            "description" : "Partially Incorrect Request Parameter"
+          }
+        }, 
+        "summary" : "Creates or updates billing department and work unit maps.", 
+        "tags" : [ "Billing Department and Work Unit Maps" ]
+      }
+    }, 
+    "/v1/hca/volume/charge_masters" : {
+      "get" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation returns all charge masters. The response may be paginated using index and count. The count query parameter has no upper limit.", 
+        "operationId" : "Retrieve All Charge Masters", 
+        "parameters" : [ {
+          "in" : "query", 
+          "name" : "index", 
+          "required" : false, 
+          "type" : "string"
+        }, {
+          "in" : "query", 
+          "name" : "count", 
+          "required" : false, 
+          "type" : "string"
+        }, {
+          "in" : "query", 
+          "name" : "reference_date", 
+          "required" : false, 
+          "type" : "string"
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/ChargeMaster"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "400" : {
+            "description" : "Charge Master does not exists."
+          }
+        }, 
+        "summary" : "Returns all Charge Masters.", 
+        "tags" : [ "Charge Masters" ]
+      }
+    }, 
+    "/v1/hca/volume/charge_masters/multi_upsert" : {
+      "post" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation creates a new or updates an existing charge master. Charge masters are identified based on the unique combination of a <b>Billing Department</b> and a <b>Procedure Code or Volume label</b>.", 
+        "operationId" : "Create or Update Charge Masters", 
+        "parameters" : [ {
+          "description" : "The Create or Update Charge Masters request payload.", 
+          "in" : "body", 
+          "name" : "body", 
+          "required" : true, 
+          "schema" : {
+            "items" : {
+              "$ref" : "#/definitions/ChargeMaster"
+            }, 
+            "type" : "array"
+          }
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Successfully persisted list of Charge Master.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/ChargeMaster"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "207" : {
+            "description" : "Partially Incorrect Request Parameter.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/ChargeMaster"
+              }, 
+              "type" : "array"
+            }
+          }
+        }, 
+        "summary" : "Creates or updates charge masters.", 
+        "tags" : [ "Charge Masters" ]
+      }
+    }, 
+    "/v1/hca/volume/charge_masters/volume_labels/multi_read" : {
+      "post" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation returns one or more volume labels by object references. The response may be paginated using index and count.", 
+        "operationId" : "Retrieve Volume Labels", 
+        "parameters" : [ {
+          "description" : "The Retrieve Volume Labels request payload.", 
+          "in" : "body", 
+          "name" : "body", 
+          "required" : true, 
+          "schema" : {
+            "$ref" : "#/definitions/VolumeLabelRequest"
+          }
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/VolumeLabel"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "207" : {
+            "description" : "Partially Incorrect Request Parameter.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/VolumeLabel"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "400" : {
+            "description" : "The specified volume labels do not exist."
+          }
+        }, 
+        "summary" : "Returns one or more volume labels.", 
+        "tags" : [ "Charge Masters" ]
+      }
+    }, 
+    "/v1/hca/volume/raw_volume/multi_upsert" : {
+      "post" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation creates or updates raw volume.", 
+        "operationId" : "Create or Update Raw Volume", 
+        "parameters" : [ {
+          "description" : "The Create or Update Raw Volume request payload.", 
+          "in" : "body", 
+          "name" : "body", 
+          "required" : true, 
+          "schema" : {
+            "$ref" : "#/definitions/RawVolumeImport"
+          }
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Successfully persisted list of Raw Volume data.", 
+            "schema" : {
+              "$ref" : "#/definitions/RawVolumeImport"
+            }
+          }, 
+          "207" : {
+            "description" : "Partially Incorrect Request Parameter.", 
+            "schema" : {
+              "$ref" : "#/definitions/RawVolumeImport"
+            }
+          }
+        }, 
+        "summary" : "Creates or updates raw volume.", 
+        "tags" : [ "Raw Volume" ]
+      }
+    }, 
+    "/v1/hca/volume/recalculate/async" : {
+      "post" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "<p>This operation recalculates volume by date range.</p><br /><p>The associated Access Control Point is HEALTHCARE_ANALYTICS.</p>", 
+        "operationId" : "Recalculate Volume", 
+        "parameters" : [ {
+          "description" : "Historical recalculate parameter", 
+          "in" : "body", 
+          "name" : "body", 
+          "required" : true, 
+          "schema" : {
+            "$ref" : "#/definitions/Historical Volume Recalculation Timespan"
+          }
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Successfully triggered the historical recalculation of volume data based on date range."
+          }, 
+          "400" : {
+            "description" : "Partially Incorrect Request Parameter."
+          }
+        }, 
+        "summary" : "Recalculates volume by date range.", 
+        "tags" : [ "Volume Recalculation" ]
+      }
+    }, 
+    "/v1/hca/volume/volume_copy_maps" : {
+      "get" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation returns all volume copy maps. The response may be paginated using index and count. The count query parameter has no upper limit.", 
+        "operationId" : "Retrieve All Volume Copy Maps", 
+        "parameters" : [ {
+          "in" : "query", 
+          "name" : "index", 
+          "required" : false, 
+          "type" : "string"
+        }, {
+          "in" : "query", 
+          "name" : "count", 
+          "required" : false, 
+          "type" : "string"
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/VolumeDepartmentCopy"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "400" : {
+            "description" : "Bad request."
+          }
+        }, 
+        "summary" : "Returns all volume copy maps.", 
+        "tags" : [ "Volume Copy Maps" ]
+      }
+    }, 
+    "/v1/hca/volume/volume_copy_maps/multi_upsert" : {
+      "post" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation creates or updates volume copy maps.", 
+        "operationId" : "Create or Update Volume Copy Maps", 
+        "parameters" : [ {
+          "description" : "The Create or Update Volume Copy Maps request payload.", 
+          "in" : "body", 
+          "name" : "body", 
+          "required" : true, 
+          "schema" : {
+            "items" : {
+              "$ref" : "#/definitions/VolumeDepartmentCopy"
+            }, 
+            "type" : "array"
+          }
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Successfully persisted list of Volume Department Copy data.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/VolumeDepartmentCopy"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "207" : {
+            "description" : "Partially Incorrect Request Parameter.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/VolumeDepartmentCopy"
+              }, 
+              "type" : "array"
+            }
+          }
+        }, 
+        "summary" : "Creates or updates volume copy maps.", 
+        "tags" : [ "Volume Copy Maps" ]
+      }
+    }, 
+    "/v1/hca/volume/volume_copy_override_maps" : {
+      "get" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation returns all volume copy override maps. The response may be paginated using index and count. The count query parameter has no upper limit.", 
+        "operationId" : "Retrieve All Volume Copy Override Maps", 
+        "parameters" : [ {
+          "in" : "query", 
+          "name" : "index", 
+          "required" : false, 
+          "type" : "string"
+        }, {
+          "in" : "query", 
+          "name" : "count", 
+          "required" : false, 
+          "type" : "string"
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/VolumeCopyOverride"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "400" : {
+            "description" : "The Retrieve All Volume Copy Override Maps request payload."
+          }
+        }, 
+        "summary" : "Returns all volume copy override maps.", 
+        "tags" : [ "Volume Copy Override Maps" ]
+      }
+    }, 
+    "/v1/hca/volume/volume_copy_override_maps/multi_upsert" : {
+      "post" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation creates or updates volume copy override maps.", 
+        "operationId" : "Create or Update Volume Copy Override Maps", 
+        "parameters" : [ {
+          "description" : "The Create or Update Volume Copy Override Maps request payload.", 
+          "in" : "body", 
+          "name" : "body", 
+          "required" : true, 
+          "schema" : {
+            "items" : {
+              "$ref" : "#/definitions/VolumeCopyOverride"
+            }, 
+            "type" : "array"
+          }
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Successfully persisted list of Volume Copy Override.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/VolumeCopyOverride"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "207" : {
+            "description" : "Partially Incorrect Request Parameter.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/VolumeCopyOverride"
+              }, 
+              "type" : "array"
+            }
+          }
+        }, 
+        "summary" : "Creates or updates volume copy override maps.", 
+        "tags" : [ "Volume Copy Override Maps" ]
+      }
+    }, 
+    "/v1/hca/volume/{executionKey}/status" : {
+      "get" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "This operation returns the current status of recalculation processing by execution key.", 
+        "operationId" : "Retrieve Volume Process Status by Key", 
+        "parameters" : [ {
+          "description" : "The execution key associated with a volume process.", 
+          "in" : "path", 
+          "name" : "executionKey", 
+          "required" : true, 
+          "type" : "string"
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "$ref" : "#/definitions/Volume Process Status"
+            }
+          }, 
+          "400" : {
+            "description" : "Execution key does not exist."
+          }
+        }, 
+        "summary" : "Retrieves the current status of recalculation processing.", 
+        "tags" : [ "Volume Process Status" ]
+      }
+    }, 
+    "/v1/hca/work_unit_hyperfind_profiles" : {
+      "get" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "<p>This operation returns all work unit Hyperfind Profiles. This operation supports pagination.</p><br /><p>The associated Access Control Point is HEALTHCARE_ANALYTICS.</p>", 
+        "operationId" : "Retrieve All Work Unit Hyperfind Profiles", 
+        "parameters" : [ {
+          "description" : "The pagination index of the Retrieve All Work Unit Hyperfind Profiles request. This parameter is optional and has no upper limit.", 
+          "in" : "query", 
+          "name" : "index", 
+          "required" : false, 
+          "type" : "string"
+        }, {
+          "description" : "The pagination count of the Retrieve All Work Unit Hyperfind Profiles request. This parameter is optional and has no upper limit.", 
+          "in" : "query", 
+          "name" : "count", 
+          "required" : false, 
+          "type" : "string"
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/Pagination Response"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "400" : {
+            "description" : "Bad Request."
+          }, 
+          "404" : {
+            "description" : "Not Found."
+          }
+        }, 
+        "summary" : "Returns all work unit Hyperfind Profiles.", 
+        "tags" : [ "Work Unit Hyperfind Profiles" ]
+      }
+    }, 
+    "/v1/hca/work_unit_hyperfind_profiles/multi_upsert" : {
+      "post" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "<p>This operation creates or updates one or more work unit Hyperfind Profiles.</p><br /><p>The associated Access Control Point is HEALTHCARE_ANALYTICS.</p>", 
+        "operationId" : "Create or Update Work Unit Hyperfind Profiles", 
+        "parameters" : [ {
+          "in" : "body", 
+          "name" : "body", 
+          "required" : false, 
+          "schema" : {
+            "items" : {
+              "$ref" : "#/definitions/WorkUnitHyperfindProfileDTO"
+            }, 
+            "type" : "array"
+          }
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/WorkUnitHyperfindProfileDTO"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "400" : {
+            "description" : "Bad Request."
+          }, 
+          "404" : {
+            "description" : "Not Found."
+          }
+        }, 
+        "summary" : "Creates or updates one or more work unit Hyperfind Profiles.", 
+        "tags" : [ "Work Unit Hyperfind Profiles" ]
+      }
+    }, 
+    "/v1/hca/work_unit_hyperfinds" : {
+      "get" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "<p>This operation returns all work unit Hyperfinds. This operation supports pagination.</p><br /><p>The associated Access Control Point is HEALTHCARE_ANALYTICS.</p>", 
+        "operationId" : "Retrieve All Work Unit Hyperfinds", 
+        "parameters" : [ {
+          "description" : "The pagination index of the Retrieve All Work Unit Hyperfinds request.", 
+          "in" : "query", 
+          "name" : "index", 
+          "required" : true, 
+          "type" : "string"
+        }, {
+          "description" : "The pagination count of the Retrieve All Work Unit Hyperfinds request. This query paramter has no upper limit.", 
+          "in" : "query", 
+          "name" : "count", 
+          "required" : true, 
+          "type" : "string"
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/Pagination Response"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "400" : {
+            "description" : "Bad Request."
+          }, 
+          "404" : {
+            "description" : "Not Found."
+          }
+        }, 
+        "summary" : "Returns all work unit Hyperfinds.", 
+        "tags" : [ "Work Unit Hyperfinds" ]
+      }
+    }, 
+    "/v1/hca/work_unit_hyperfinds/apply_read" : {
+      "post" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "<p>This operation executes a work unit Hyperfind and returns work units constrained by a date range.</p><br /><p>The associated Access Control Point is HEALTHCARE_ANALYTICS.</p>", 
+        "operationId" : "Execute Work Unit Hyperfind", 
+        "parameters" : [ {
+          "description" : "The Execute Work Unit Hyperfind request payload.", 
+          "in" : "body", 
+          "name" : "body", 
+          "required" : true, 
+          "schema" : {
+            "$ref" : "#/definitions/WorkUnitHyperfindRequest"
+          }
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/ResolvedWorkUnit"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "400" : {
+            "description" : "Bad Request."
+          }, 
+          "404" : {
+            "description" : "Not Found."
+          }
+        }, 
+        "summary" : "Executes a work unit Hyperfind.", 
+        "tags" : [ "Work Unit Hyperfinds" ]
+      }
+    }, 
+    "/v1/hca/work_unit_hyperfinds/multi_upsert" : {
+      "post" : {
+        "consumes" : [ "application/json" ], 
+        "description" : "<p>This operation creates or updates one or more work unit Hyperfinds.</p><br /><p>The associated Access Control Point is HEALTHCARE_ANALYTICS.</p>", 
+        "operationId" : "Create or Update Work Unit Hyperfinds", 
+        "parameters" : [ {
+          "description" : "The Create or Update Work Unit Hyperfinds request payload.", 
+          "in" : "body", 
+          "name" : "body", 
+          "required" : true, 
+          "schema" : {
+            "items" : {
+              "$ref" : "#/definitions/WorkUnitHyperfindDTO"
+            }, 
+            "type" : "array"
+          }
+        } ], 
+        "produces" : [ "application/json" ], 
+        "responses" : {
+          "200" : {
+            "description" : "Success.", 
+            "schema" : {
+              "items" : {
+                "$ref" : "#/definitions/WorkUnitHyperfindDTO"
+              }, 
+              "type" : "array"
+            }
+          }, 
+          "400" : {
+            "description" : "Bad Request."
+          }, 
+          "404" : {
+            "description" : "Not Found."
+          }
+        }, 
+        "summary" : "Creates or updates one or more work unit Hyperfinds.", 
+        "tags" : [ "Work Unit Hyperfinds" ]
+      }
+    }
+  }, 
+  "schemes" : null, 
+  "definitions" : {
+    "AnalyticsWorkUnitDTO" : {
+      "description" : "Model describing the details of a work unit.", 
+      "properties" : {
+        "caregiverSwt" : {
+          "description" : "The care giver switch for work unit.", 
+          "format" : "int32", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "id" : {
+          "description" : "The ID of work unit.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "locations" : {
+          "description" : "Mapped locations with work unit.", 
+          "items" : {
+            "$ref" : "#/definitions/OrgEffectiveNodeDTO"
+          }, 
+          "readOnly" : true, 
+          "type" : "array"
+        }, 
+        "name" : {
+          "description" : "The name of work unit.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "payRule" : {
+          "$ref" : "#/definitions/PayRuleDTO", 
+          "description" : "Mapped pay rule with work unit.", 
+          "readOnly" : true
+        }, 
+        "serviceLine" : {
+          "description" : "The service line of work unit.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "unitOfService" : {
+          "description" : "The unit of service of work unit.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "workGroup" : {
+          "$ref" : "#/definitions/WorkGroupDTO"
+        }, 
+        "workUnitCode" : {
+          "description" : "The code of work unit.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "workUnitType" : {
+          "$ref" : "#/definitions/AnalyticsWorkUnitTypeDTO", 
+          "description" : "The type of work unit.", 
+          "readOnly" : true
+        }, 
+        "workWeekFTEHours" : {
+          "description" : "The work week FTE hours of work unit.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "WorkUnitTraversalRequest" : {
+      "description" : "Model describing the details of WorkUnitTraversalRequest.", 
+      "properties" : {
+        "where" : {
+          "$ref" : "#/definitions/Where", 
+          "description" : "The where clause in which the actual criterion for retrieving configurations of work units, targets and symbolic time periods is specified.", 
+          "readOnly" : true
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "WorkUnitTraversalResponseItem" : {
+      "description" : "Model describing the details of WorkUnitTraversalResponseItem.", 
+      "properties" : {
+        "dateRanges" : {
+          "description" : "The resolved date spans along with the time increment type and optional days of operation.", 
+          "items" : {
+            "$ref" : "#/definitions/DateRangeResponse"
+          }, 
+          "readOnly" : true, 
+          "type" : "array"
+        }, 
+        "targets" : {
+          "description" : "The resolved target definitions.", 
+          "items" : {
+            "$ref" : "#/definitions/TargetResponse"
+          }, 
+          "readOnly" : true, 
+          "type" : "array"
+        }, 
+        "workUnit" : {
+          "$ref" : "#/definitions/WorkUnitResponse", 
+          "description" : "The resolved details of the work unit.", 
+          "readOnly" : true
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "PayrollDataEnricher" : {
+      "description" : "The Enrich Payroll Data request model.", 
+      "properties" : {
+        "departmentCode" : {
+          "description" : "The department code.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "employee" : {
+          "$ref" : "#/definitions/CommonIDQualifierRestDTO", 
+          "description" : "A reference to an employee object.", 
+          "readOnly" : true
+        }, 
+        "employmentStatusCode" : {
+          "description" : "The employment status code.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "facilityCode" : {
+          "description" : "The facility code.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "homeDepartmentCode" : {
+          "description" : "The home department code.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "homeFacilityCode" : {
+          "description" : "The home facility code.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "payPeriodEndDate" : {
+          "description" : "The end date of a pay period in ISO_LOCAL_DATE format (YYYY-MM-DD).", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "payrollJob" : {
+          "description" : "The payroll job code.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "payrollPayCode" : {
+          "description" : "The payroll pay code.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "payrollSource" : {
+          "description" : "The payroll source name.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "standardHours" : {
+          "description" : "The number of standard hours.", 
+          "format" : "double", 
+          "readOnly" : true, 
+          "type" : "number"
+        }, 
+        "workedAmount" : {
+          "description" : "The payroll worked amount expressed as a number.", 
+          "format" : "double", 
+          "readOnly" : true, 
+          "type" : "number"
+        }, 
+        "workedHours" : {
+          "description" : "The number of worked hours.", 
+          "format" : "double", 
+          "readOnly" : true, 
+          "type" : "number"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "PaginationResponseDTO" : {
+      "properties" : {
+        "records" : {
+          "items" : {
+            "type" : "object"
+          }, 
+          "type" : "array"
+        }, 
+        "totalRecords" : {
+          "format" : "int64", 
+          "type" : "integer"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "PayrollDeptWUMap" : {
+      "description" : "The Payroll Department to Work Unit Map model.", 
+      "properties" : {
+        "deleteSwitch" : {
+          "description" : "The delete switch associated with a payroll department to work unit mapping.", 
+          "readOnly" : true, 
+          "type" : "object"
+        }, 
+        "id" : {
+          "description" : "The ID of a payroll department to work unit mapping.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "payrollDepartment" : {
+          "$ref" : "#/definitions/Payroll Department", 
+          "description" : "The payroll department associated with a mapping.", 
+          "readOnly" : true
+        }, 
+        "payrollSource" : {
+          "$ref" : "#/definitions/Payroll Source", 
+          "description" : "The payroll source of a payroll department to work unit mapping.", 
+          "readOnly" : true
+        }, 
+        "workUnit" : {
+          "$ref" : "#/definitions/PayrollDeptWorkUnitDTO", 
+          "description" : "The work unit of a payroll department to work unit mapping.", 
+          "readOnly" : true
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "Payroll Employment Status Labor Type Map" : {
+      "description" : "Payroll Employment Status Labor Type Map object model.", 
+      "properties" : {
+        "analyticsLaborType" : {
+          "$ref" : "#/definitions/CommonIDQualifierRestDTO", 
+          "description" : "A reference to the Analytics labor type object.", 
+          "readOnly" : true
+        }, 
+        "deleteSwitch" : {
+          "description" : "The delete switch associated with a payroll employment status labor type map.", 
+          "readOnly" : true, 
+          "type" : "object"
+        }, 
+        "id" : {
+          "description" : "The ID of a payroll employment status labor type map.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "payrollSource" : {
+          "$ref" : "#/definitions/Payroll Source", 
+          "description" : "A reference to the payroll source object.", 
+          "readOnly" : true
+        }, 
+        "payrollStatus" : {
+          "$ref" : "#/definitions/PayrollEmploymentStatusDTO", 
+          "description" : "A reference to the payroll employment status object.", 
+          "readOnly" : true
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "PayrollJobGenericJobMap" : {
+      "description" : "The Payroll Job to Generic Job Map model.", 
+      "properties" : {
+        "deleteSwitch" : {
+          "description" : "The delete switch associated with a Payroll job to generic job mapping.", 
+          "readOnly" : true, 
+          "type" : "object"
+        }, 
+        "genericJob" : {
+          "$ref" : "#/definitions/CommonIDQualifierRestDTO", 
+          "description" : "The generic job of a Payroll job to generic job mapping.", 
+          "readOnly" : true
+        }, 
+        "id" : {
+          "description" : "The ID of a Payroll job to generic job mapping.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "laborCategoryEntry" : {
+          "$ref" : "#/definitions/CommonIDQualifierRestDTO", 
+          "description" : "The payroll job of a Payroll job to generic job mapping.", 
+          "readOnly" : true
+        }, 
+        "payrollSource" : {
+          "$ref" : "#/definitions/Payroll Source", 
+          "description" : "The payroll source of a Payroll job to generic job mapping.", 
+          "readOnly" : true
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "BillingDepartmentAndWorkUnitMapping" : {
+      "description" : "Model describing the details of a billing department work unit Mapping.", 
+      "properties" : {
+        "billingDepartment" : {
+          "$ref" : "#/definitions/Billing Department", 
+          "description" : "The billing department of billing department work unit Mapping.", 
+          "readOnly" : true
+        }, 
+        "deleteSwitch" : {
+          "description" : "The delete switch of billing department work unit Mapping.", 
+          "format" : "int32", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "id" : {
+          "description" : "The ID of billing department work unit Mapping.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "workUnit" : {
+          "$ref" : "#/definitions/BillingDepartmentWorkUnit", 
+          "description" : "The work unit of billing department work unit Mapping.", 
+          "readOnly" : true
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "ChargeMaster" : {
+      "description" : "Model describing the details of a charge master.", 
+      "properties" : {
+        "billingDepartment" : {
+          "$ref" : "#/definitions/Billing Department", 
+          "description" : "The billing department of charge master.", 
+          "readOnly" : true
+        }, 
+        "effectiveDate" : {
+          "description" : "The effective date of charge master.", 
+          "format" : "date", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "id" : {
+          "description" : "The ID of charge master.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "volumeLabel" : {
+          "$ref" : "#/definitions/VolumeLabel", 
+          "description" : "The procedure code/volume Label of charge master.", 
+          "readOnly" : true
+        }, 
+        "weight" : {
+          "description" : "The weight of charge master.", 
+          "readOnly" : true, 
+          "type" : "number"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "VolumeLabelRequest" : {
+      "description" : "Model describing the volume label request body.", 
+      "properties" : {
+        "where" : {
+          "$ref" : "#/definitions/Where", 
+          "description" : "The where clause of a volume label request in which the actual criteria for retrieving volume labels is specified.", 
+          "readOnly" : true
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "VolumeLabel" : {
+      "description" : "Model describing the details of a procedure code/volume label.", 
+      "properties" : {
+        "description" : {
+          "description" : "The description of procedure code/volume label.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "id" : {
+          "description" : "The ID of procedure code/volume label.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "qualifier" : {
+          "description" : "The volume label code of procedure code/volume label.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "RawVolumeImport" : {
+      "description" : "Model describing the details of a raw volume import.", 
+      "properties" : {
+        "loadDateTime" : {
+          "description" : "The load date time of raw volume import.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "patType" : {
+          "description" : "The patient type of raw volume import.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "rawVolumes" : {
+          "description" : "List of raw volume data.", 
+          "items" : {
+            "$ref" : "#/definitions/RawVolume"
+          }, 
+          "readOnly" : true, 
+          "type" : "array"
+        }, 
+        "source" : {
+          "description" : "The source of raw volume import.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "updateType" : {
+          "description" : "The update type of raw volume import.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "Historical Volume Recalculation Timespan" : {
+      "description" : "v1.0.historicalvolumerecalcdto.apimodel.description", 
+      "properties" : {
+        "where" : {
+          "$ref" : "#/definitions/Historical Volume Recalculation Date Range", 
+          "description" : "Model describing date range of historical volume recalculation.", 
+          "readOnly" : true
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "VolumeDepartmentCopy" : {
+      "description" : "Model describing the details of a volume department copy.", 
+      "properties" : {
+        "destBillingDepartment" : {
+          "$ref" : "#/definitions/Billing Department", 
+          "description" : "The destination billing department of volume department copy.", 
+          "readOnly" : true
+        }, 
+        "id" : {
+          "description" : "The ID of volume department copy.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "srcBillingDepartment" : {
+          "$ref" : "#/definitions/Billing Department", 
+          "description" : "The source billing department of volume department copy.", 
+          "readOnly" : true
+        }, 
+        "weight" : {
+          "description" : "The weight of volume department copy.", 
+          "readOnly" : true, 
+          "type" : "number"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "VolumeCopyOverride" : {
+      "description" : "Model describing the details of a volume copy override.", 
+      "properties" : {
+        "destBillingDepartment" : {
+          "$ref" : "#/definitions/Billing Department", 
+          "description" : "The destination billing department of volume department copy.", 
+          "readOnly" : true
+        }, 
+        "id" : {
+          "description" : "The ID of volume department copy.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "srcBillingDepartment" : {
+          "$ref" : "#/definitions/Billing Department", 
+          "description" : "The source billing department of volume department copy.", 
+          "readOnly" : true
+        }, 
+        "volumeLabel" : {
+          "$ref" : "#/definitions/VolumeLabel", 
+          "description" : "The procedure code/volume label of volume copy override.", 
+          "readOnly" : true
+        }, 
+        "weight" : {
+          "description" : "The weight of volume department copy.", 
+          "readOnly" : true, 
+          "type" : "number"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "Volume Process Status" : {
+      "description" : "Model describing the details of volume process status.", 
+      "properties" : {
+        "batchJobId" : {
+          "description" : "The ID of a batch job.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "comments" : {
+          "description" : "The Comments associated with a volume process status.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "createDateTime" : {
+          "description" : "The date and time a volume batch was created in ISO_LOCAL_DATE_TIME format (yyyy-mm-ddThh:mm:ss.sss).", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "endDateTime" : {
+          "description" : "The end date and time of a volume process status in ISO_LOCAL_DATE_TIME format (yyyy-mm-ddThh:mm:ss.sss).", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "hcaStatus" : {
+          "description" : "The status of a volume process.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "id" : {
+          "description" : "The ID of a volume process status.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "ktid" : {
+          "description" : "The KTID (Kronos transaction ID) associated with a volume process status.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "processGroupKey" : {
+          "description" : "The key associated with a volume process group.", 
+          "format" : "uuid", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "processKey" : {
+          "description" : "The key associated with a volume process.", 
+          "format" : "uuid", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "processName" : {
+          "description" : "The process name associated with volume process status.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "retryCount" : {
+          "description" : "The number (count) of retries associated with a volume process status.", 
+          "format" : "int32", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "startDateTime" : {
+          "description" : "The start date and time of a volume process status in ISO_LOCAL_DATE_TIME format (yyyy-mm-ddThh:mm:ss.sss).", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "status" : {
+          "description" : "The status of a volume process.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "updateDateTime" : {
+          "description" : "The date and time a volume process status was last updated in ISO_LOCAL_DATE_TIME format (yyyy-mm-ddThh:mm:ss.sss).", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "Pagination Response" : {
+      "description" : "Model describing the details of pagination response of a work unit Hyperfind Profile.", 
+      "properties" : {
+        "records" : {
+          "description" : "List of work unit Hyperfind Profiles.", 
+          "items" : {
+            "type" : "object"
+          }, 
+          "readOnly" : true, 
+          "type" : "array"
+        }, 
+        "totalElements" : {
+          "description" : "Total count of work unit Hyperfind Profiles.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "WorkUnitHyperfindProfileDTO" : {
+      "description" : "Model describing the details of a work unit Hyperfind Profile.", 
+      "properties" : {
+        "description" : {
+          "description" : "The description of a work unit Hyperfind Profile.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "id" : {
+          "description" : "The ID of a work unit Hyperfind Profile.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "label" : {
+          "description" : "The label of a work unit Hyperfind Profile.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "name" : {
+          "description" : "The name of a work unit Hyperfind Profile.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "workUnitHyperfinds" : {
+          "description" : "The work unit Hyperfinds associated with a work unit Hyperfind Profile.", 
+          "items" : {
+            "$ref" : "#/definitions/WorkUnitHyperfindMappingDTO"
+          }, 
+          "readOnly" : true, 
+          "type" : "array"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "WorkUnitHyperfindRequest" : {
+      "description" : "Model describing the details of WorkunitHyperfindRequest.", 
+      "properties" : {
+        "where" : {
+          "$ref" : "#/definitions/WorkUnitHyperfindWhere", 
+          "description" : "The where clause of a work unit Hyperfind request in which the actual criteria for retrieving work unit Hyperfinds is specified.", 
+          "readOnly" : true
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "ResolvedWorkUnit" : {
+      "description" : "Model describing the details of ResolvedWorkUnit.", 
+      "properties" : {
+        "id" : {
+          "description" : "The ID associated with the work unit.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "name" : {
+          "description" : "The name of the work unit.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "workUnitCode" : {
+          "description" : "The code of the work unit.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "WorkUnitHyperfindDTO" : {
+      "description" : "Model describing the details of a work unit Hyperfind.", 
+      "properties" : {
+        "description" : {
+          "description" : "The description of work unit Hyperfind.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "id" : {
+          "description" : "The ID of a work unit Hyperfind.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "label" : {
+          "description" : "The label of a work unit Hyperfind.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "name" : {
+          "description" : "The name of a work unit Hyperfind.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "workUnits" : {
+          "description" : "Mapped work units with work unit Hyperfind.", 
+          "items" : {
+            "$ref" : "#/definitions/WorkUnitDTO"
+          }, 
+          "readOnly" : true, 
+          "type" : "array"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "OrgEffectiveNodeDTO" : {
+      "description" : "Model describing the details of Business Structure org effective node mapped with work unit.", 
+      "properties" : {
+        "id" : {
+          "description" : "The ID of a Business Structure org node.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "qualifier" : {
+          "description" : "Full path of a Business Structure org node.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "uuid" : {
+          "description" : "The UUID of a Business Structure org node.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "PayRuleDTO" : {
+      "description" : "Model describing the details of pay rule mapped with work unit.", 
+      "properties" : {
+        "effectiveDate" : {
+          "description" : "Effective date for the pay rule mapping with work unit.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "id" : {
+          "description" : "The ID of the pay rule.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "qualifier" : {
+          "description" : "The name of the pay rule.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "WorkGroupDTO" : {
+      "properties" : {
+        "description" : {
+          "type" : "string"
+        }, 
+        "id" : {
+          "format" : "int64", 
+          "type" : "integer"
+        }, 
+        "qualifier" : {
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "AnalyticsWorkUnitTypeDTO" : {
+      "description" : "Model describing the details of work unit type.", 
+      "properties" : {
+        "id" : {
+          "description" : "The ID of work unit type.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "name" : {
+          "description" : "The name of work unit. [attribute used in UI only.]", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "qualifier" : {
+          "description" : "The name of work unit.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "Where" : {
+      "description" : "Model describing the volume label where clause.", 
+      "properties" : {
+        "ids" : {
+          "description" : "A list of employee IDs. These are not person numbers.", 
+          "items" : {
+            "format" : "int64", 
+            "type" : "integer"
+          }, 
+          "readOnly" : true, 
+          "type" : "array"
+        }, 
+        "qualifiers" : {
+          "description" : "A list of employee qualifiers.", 
+          "items" : {
+            "type" : "string"
+          }, 
+          "readOnly" : true, 
+          "type" : "array"
+        }, 
+        "refs" : {
+          "description" : "The ID or qualifier that identifies an employee.", 
+          "items" : {
+            "$ref" : "#/definitions/VolumeLabel"
+          }, 
+          "readOnly" : true, 
+          "type" : "array"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "DateRangeResponse" : {
+      "description" : "Model for the resolved date ranges.", 
+      "properties" : {
+        "dateSpans" : {
+          "description" : "The start and end dates in ISO_LOCAL_DATE format (YYYY-MM-DD) along with the optional days of operation of the resolved pay periods (for a symbolic time period) or the date range supplied.", 
+          "items" : {
+            "$ref" : "#/definitions/DateSpan"
+          }, 
+          "readOnly" : true, 
+          "type" : "array"
+        }, 
+        "symbolicTimePeriod" : {
+          "description" : "A symbolic identifier that represents a timeframe or a span of time.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "timeIncrement" : {
+          "description" : "The time increment type. Valid values include DAY and PAYPERIOD.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "TargetResponse" : {
+      "description" : "Model describing the details of target in response.", 
+      "properties" : {
+        "qualifier" : {
+          "description" : "The healthcare target qualifier.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "targetDefinition" : {
+          "$ref" : "#/definitions/TargetDefinition", 
+          "description" : "The definition of the requested healthcare target.", 
+          "readOnly" : true
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "WorkUnitResponse" : {
+      "description" : "Model describing the details of work unit in response.", 
+      "properties" : {
+        "careGiverSwitch" : {
+          "description" : "The caregiver switch for the work unit.", 
+          "format" : "int32", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "code" : {
+          "description" : "The work unit code.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "fteHours" : {
+          "description" : "The full time equivalent hours for the work unit.", 
+          "readOnly" : true, 
+          "type" : "number"
+        }, 
+        "id" : {
+          "description" : "The work unit identifier.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "locationId" : {
+          "description" : "The identifier of the location associated with the work unit.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "name" : {
+          "description" : "The work unit name.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "rollUpBy" : {
+          "description" : "The location jobs resolved for the work unit, optionally grouped by work groups.", 
+          "items" : {
+            "$ref" : "#/definitions/ByWorkGroup"
+          }, 
+          "readOnly" : true, 
+          "type" : "array"
+        }, 
+        "serviceLine" : {
+          "description" : "The work unit service line.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "unitOfService" : {
+          "description" : "The unit of service of the work unit.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "workGroupId" : {
+          "description" : "The identifier of the work group associated with the work unit.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "workUnitType" : {
+          "$ref" : "#/definitions/ObjectRef", 
+          "description" : "The work unit type.", 
+          "readOnly" : true
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "CommonIDQualifierRestDTO" : {
+      "description" : "An object reference model.", 
+      "properties" : {
+        "id" : {
+          "description" : "The ID of an object reference.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "qualifier" : {
+          "description" : "The qualifier of an object reference.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "Payroll Department" : {
+      "description" : "The Payroll Department model.", 
+      "properties" : {
+        "departmentCode" : {
+          "description" : "The department code associated with a payroll department.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "facilityCode" : {
+          "description" : "The facility code associated with a payroll department.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "id" : {
+          "description" : "The ID of a payroll department.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "Payroll Source" : {
+      "description" : "The Payroll Source model.", 
+      "properties" : {
+        "id" : {
+          "description" : "The ID of a payroll source.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "name" : {
+          "description" : "The name of a payroll source.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "PayrollDeptWorkUnitDTO" : {
+      "description" : "The Payroll Department to Work Unit Mapping model.", 
+      "properties" : {
+        "id" : {
+          "description" : "The ID of an object reference.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "name" : {
+          "description" : "The name of a work unit.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "qualifier" : {
+          "description" : "The qualifier of an object reference.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "PayrollEmploymentStatusDTO" : {
+      "properties" : {
+        "code" : {
+          "type" : "string"
+        }, 
+        "description" : {
+          "type" : "string"
+        }, 
+        "id" : {
+          "format" : "int64", 
+          "type" : "integer"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "Billing Department" : {
+      "description" : "Model describing the details of a billing department.", 
+      "properties" : {
+        "departmentCode" : {
+          "description" : "The department code of billing department.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "facilityCode" : {
+          "description" : "The facility code of billing department.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "id" : {
+          "description" : "The ID of billing department.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "BillingDepartmentWorkUnit" : {
+      "description" : "Model describing the details of a work unit.", 
+      "properties" : {
+        "combinationType" : {
+          "type" : "boolean"
+        }, 
+        "id" : {
+          "description" : "The ID of work unit.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "name" : {
+          "description" : "The name of work unit.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "qualifier" : {
+          "description" : "The code of work unit.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "validWU" : {
+          "type" : "boolean"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "RawVolume" : {
+      "description" : "Model describing the details of a raw volume.", 
+      "properties" : {
+        "billingDepartment" : {
+          "$ref" : "#/definitions/Billing Department", 
+          "description" : "The billing department of raw volume.", 
+          "readOnly" : true
+        }, 
+        "id" : {
+          "description" : "The ID of raw volume.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "patTypeValue" : {
+          "description" : "The patient type Value of raw volume.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "postingDate" : {
+          "description" : "The posting date of raw volume.", 
+          "format" : "date", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "quantity" : {
+          "description" : "The quantity of raw volume.", 
+          "readOnly" : true, 
+          "type" : "number"
+        }, 
+        "serviceDate" : {
+          "description" : "The service date of raw volume.", 
+          "format" : "date", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "updateDateTime" : {
+          "description" : "The update date time of raw volume.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "volumeLabel" : {
+          "$ref" : "#/definitions/VolumeLabel", 
+          "description" : "The procedure code/volume label of raw volume.", 
+          "readOnly" : true
+        }, 
+        "weight" : {
+          "description" : "The weight of raw volume.", 
+          "readOnly" : true, 
+          "type" : "number"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "Historical Volume Recalculation Date Range" : {
+      "description" : "v1.0.volumerecalcdatadto.apimodel.description", 
+      "properties" : {
+        "endDate" : {
+          "description" : "The end date of historical volume recalculation.", 
+          "format" : "date", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "startDate" : {
+          "description" : "The start date of historical volume recalculation.", 
+          "format" : "date", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "WorkUnitHyperfindMappingDTO" : {
+      "description" : "Model describing the details of WorkUnitHyperfindMappingDTO.", 
+      "properties" : {
+        "id" : {
+          "description" : "The ID associated with an object reference.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "isActive" : {
+          "description" : "A Boolean indicator of whether or not a work unit Hyperfind association is active.", 
+          "readOnly" : true, 
+          "type" : "boolean"
+        }, 
+        "qualifier" : {
+          "description" : "The qualifier associated with an object reference.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "uuid" : {
+          "description" : "The UUID associated with a work unit Hyperfind.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "WorkUnitHyperfindWhere" : {
+      "description" : "Model describing the details of WorkunitHyperfindWhere.", 
+      "properties" : {
+        "referenceDate" : {
+          "description" : "The reference date in ISO_LOCAL_DATE format (YYYY-MM-DD).", 
+          "format" : "date", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "workUnitHyperFind" : {
+          "$ref" : "#/definitions/ObjectRef", 
+          "description" : "The work unit Hyperfind.", 
+          "readOnly" : true
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "WorkUnitDTO" : {
+      "properties" : {
+        "id" : {
+          "description" : "The workunitId to be used for searching.", 
+          "format" : "int64", 
+          "type" : "integer"
+        }, 
+        "qualifier" : {
+          "description" : "The workunitCode to be used for searching.", 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "DateSpan" : {
+      "properties" : {
+        "endDate" : {
+          "format" : "date-time", 
+          "type" : "string"
+        }, 
+        "endDateUTC" : {
+          "format" : "date-time", 
+          "type" : "string"
+        }, 
+        "startDate" : {
+          "format" : "date-time", 
+          "type" : "string"
+        }, 
+        "startDateUTC" : {
+          "format" : "date-time", 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object", 
+      "xml" : {
+        "name" : "dateRange"
+      }
+    }, 
+    "TargetDefinition" : {
+      "description" : "Model describing the details of target.", 
+      "properties" : {
+        "functionId" : {
+          "description" : "The function id of target.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "functionType" : {
+          "description" : "The function type of target.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "locRefId" : {
+          "description" : "The location reference id of target.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "locRefType" : {
+          "description" : "The location reference type of target.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "refSourceSymbolicName" : {
+          "description" : "The reference source symbolic name of target.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "subType" : {
+          "description" : "The sub type of target.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "target" : {
+          "additionalProperties" : {
+            "$ref" : "#/definitions/Definition"
+          }, 
+          "description" : "Date wise definition of the target.", 
+          "readOnly" : true, 
+          "type" : "object"
+        }, 
+        "type" : {
+          "description" : "The type of target.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "ByWorkGroup" : {
+      "description" : "Model for location jobs under the work unit, optionally grouped by work groups.", 
+      "properties" : {
+        "orgJobIds" : {
+          "description" : "A list of location jobs, optionally grouped under the work group.", 
+          "items" : {
+            "format" : "int64", 
+            "type" : "integer"
+          }, 
+          "readOnly" : true, 
+          "type" : "array", 
+          "uniqueItems" : true
+        }, 
+        "workGroup" : {
+          "$ref" : "#/definitions/WorkGroupRef", 
+          "description" : "The work group reference.", 
+          "readOnly" : true
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "ObjectRef" : {
+      "description" : "The HCA object reference object model.", 
+      "properties" : {
+        "id" : {
+          "description" : "The ID associated with an object reference.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "qualifier" : {
+          "description" : "The qualifier associated with an object reference.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "Definition" : {
+      "description" : "Model for the definition of the resolved healthcare target.", 
+      "properties" : {
+        "adjustmentFlag" : {
+          "description" : "The adjustment flag.", 
+          "readOnly" : true, 
+          "type" : "boolean"
+        }, 
+        "effDate" : {
+          "description" : "The effective date in ISO_LOCAL_DATE format (YYYY-MM-DD).", 
+          "format" : "date", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "expDate" : {
+          "description" : "The expiration date in ISO_LOCAL_DATE format (YYYY-MM-DD).", 
+          "format" : "date", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "payPeriodTarget" : {
+          "$ref" : "#/definitions/PayPeriodTarget", 
+          "description" : "Pay period target assigned to the work unit.", 
+          "readOnly" : true
+        }, 
+        "workDayTarget" : {
+          "$ref" : "#/definitions/WorkDayTarget", 
+          "description" : "Daily target assigned to the work unit.", 
+          "readOnly" : true
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "WorkGroupRef" : {
+      "description" : "Model describing the details of Work Group Reference.", 
+      "properties" : {
+        "description" : {
+          "description" : "The work group description.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }, 
+        "id" : {
+          "description" : "The work group identifier.", 
+          "format" : "int64", 
+          "readOnly" : true, 
+          "type" : "integer"
+        }, 
+        "qualifier" : {
+          "description" : "The work group code.", 
+          "readOnly" : true, 
+          "type" : "string"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "PayPeriodTarget" : {
+      "description" : "Model describing the details of pay period target.", 
+      "properties" : {
+        "alternate" : {
+          "description" : "The alternate target.", 
+          "readOnly" : true, 
+          "type" : "number"
+        }, 
+        "default" : {
+          "description" : "The default target.", 
+          "readOnly" : true, 
+          "type" : "number"
+        }
+      }, 
+      "type" : "object"
+    }, 
+    "WorkDayTarget" : {
+      "description" : "Model describing the details of work day target.", 
+      "properties" : {
+        "alternate" : {
+          "description" : "The alternate targets.", 
+          "items" : {
+            "type" : "number"
+          }, 
+          "readOnly" : true, 
+          "type" : "array"
+        }, 
+        "default" : {
+          "description" : "The default targets.", 
+          "items" : {
+            "type" : "number"
+          }, 
+          "readOnly" : true, 
+          "type" : "array"
+        }
+      }, 
+      "type" : "object"
+    }
+  }
+}

@@ -13,10 +13,10 @@ jobs:
       - name: Checkout this repo
         uses: actions/checkout@v3
 
-      # Run GitHub Action to sync OpenAPI file at [path-to-file.json]
+  # Run GitHub Action to sync OpenAPI file at [path-to-file.json]
       - name: GitHub Action
         # We recommend specifying a fixed version, i.e. @8.0.2
         # Docs: https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions#example-using-versioned-actions
         uses: readmeio/rdme@8.0.2
         with:
-          rdme: openapi Attendance.json --key=rdme_xn8s9he4acca4d47e1a7a538589d0ccb67f2430c2956354856423ba3c8e12474770f19  --id=636490b07b75720042fe920b
+         rdme: docs ./documentation --key=rdme_xn8s9h7ec3d38e8936df2c360b841225481302a8edd1694adae4900a426916f912b1a1 --version=2.0

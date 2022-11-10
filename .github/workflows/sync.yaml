@@ -20,11 +20,3 @@ jobs:
         uses: readmeio/rdme@8.0.2
         with:
           rdme: openapi readme.json --key=rdme_xn8s9h8b348128bce9b863032bec12f229cccc4f24c1b259729fae0df5667dbec8d028  --id=636490b07b75720042fe920b
-          
-      # Run GitHub Action to sync docs in `documentation` directory
-      - name: GitHub Action
-        # We recommend specifying a fixed version, i.e. @8.0.2
-        # Docs: https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions#example-using-versioned-actions
-        uses: readmeio/rdme@8.0.2
-        with:
-          rdme: docs./rdme.md --key=rdme_xn8s9h8b348128bce9b863032bec12f229cccc4f24c1b259729fae0df5667dbec8d028 --version=1.0

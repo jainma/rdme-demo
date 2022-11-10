@@ -19,4 +19,4 @@ jobs:
         # Docs: https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions#example-using-versioned-actions
         uses: readmeio/rdme@8.0.2
         with:
-          rdme: openapi ./dir1 --key=rdme_xn8s9he4acca4d47e1a7a538589d0ccb67f2430c2956354856423ba3c8e12474770f19  --id=636490b07b75720042fe920b
+          rdme: openapi Attendance.json --key=rdme_xn8s9he4acca4d47e1a7a538589d0ccb67f2430c2956354856423ba3c8e12474770f19  --id=636490b07b75720042fe920b

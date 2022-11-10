@@ -1,7 +1,7 @@
 ---
 title: Syncing Docs via CLI / GitHub
 excerpt: Update your docs automatically with `rdme`, ReadMe's official CLI and GitHub Action!
-category: 63635cbd4bdd030087f223b5
+category: 63634baa1b7f6300419eab88
 ---
 
 <!--

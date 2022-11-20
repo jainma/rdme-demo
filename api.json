@@ -1,0 +1,35 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://10.131.54.31:8443
+    description: Generated server url
+    x-readme:
+      proxy-enabled: false
+paths:
+  /api/v1/candidates:
+    get:
+      tags:
+        - api-rest-controller
+      operationId: fetchCandidates
+      x-readme:
+        headers:
+          - key: Access-Control-Allow-Origin
+            value: '*'
+      parameters:
+        - name: skill
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              examples:
+                API Candidate response:
+                  value: >-
+                    [{"name":"John","experienceYears":2,"skillsSet":["c#","golang","c++","java"]},{"name":"David","experienceYears":1,"skillsSet":["javascript","c++"]},{"name":"Diana","experienceYears":4,"skillsSet":["java","python"]},{"name":"June","experienceYears":2,"skillsSet":["aws","ruby","docker"]},{"name":"April","experienceYears":3,"skillsSet":["Erlang","docker","python"]}]
+components: {}

@@ -1,6 +1,7 @@
 ---
 title: "Viewing an operation"
 excerpt: "Welcome to the Dimensions REST API Excerpt..."
+category: "637a4341809da900abfdc4bf"
 ---
 
 # Viewing an operation

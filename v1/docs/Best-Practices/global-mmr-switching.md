@@ -1,7 +1,7 @@
 ---
 title: "Global Multiple Manager Role switching"
 excerpt: "Welcome to the Dimensions REST API Excerpt..."
-category: "63638713c59bff0262ce8c29"
+category: "637a4341809da900abfdc4bf"
 ---
 
 # Global Multiple Manager Role switching

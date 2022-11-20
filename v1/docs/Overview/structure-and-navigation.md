@@ -1,7 +1,7 @@
 ---
 title: "Structure and navigation"
 excerpt: "Welcome to the Dimensions REST API Excerpt..."
-category: "636cb68482bf5e0061c0324a"
+category: "637a4341809da900abfdc4bf"
 ---
 
 # Structure and navigation

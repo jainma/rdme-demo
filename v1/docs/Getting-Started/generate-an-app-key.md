@@ -1,6 +1,7 @@
 ---
 title: "App keys, client ID, and client secret"
 excerpt: "Welcome to the Dimensions REST API Excerpt..."
+category: "637a4341809da900abfdc4bf"
 ---
 
 #  App keys, client ID, and client secret

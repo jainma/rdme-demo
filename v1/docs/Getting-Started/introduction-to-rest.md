@@ -1,6 +1,7 @@
 ---
 title: "An Introduction to Representational State Transfer (REST) APIs"
 excerpt: "Welcome to the Dimensions REST API Excerpt..."
+category: "637a4341809da900abfdc4bf"
 ---
 
 # An Introduction to Representational State Transfer (REST) APIs

@@ -4308,6 +4308,5 @@
                 "type": "object"
             }
         }
-    
-	$include#Common-Resources-II: ./Common-Resources-II.json
-}1Å—
+}
+}

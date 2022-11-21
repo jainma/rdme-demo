@@ -1872,6 +1872,7 @@
             "url": "/"
         }
     ],
+	$include#cvixapi: ./cvixapi.json
     "components": {
         "schemas": {
             "CompleteActionsRequestContext": {
@@ -4426,4 +4427,5 @@
             }
         }
     }
+	
 }

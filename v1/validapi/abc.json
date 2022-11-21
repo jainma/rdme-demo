@@ -1,0 +1,6 @@
+{
+    "openapi": "3.0.0",
+
+$include#Attendance: ./Attendance.json
+$include#Common-Resources-II: ./Common-Resources-II.json
+}

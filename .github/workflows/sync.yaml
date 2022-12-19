@@ -19,7 +19,7 @@ jobs:
         # Docs: https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions#example-using-versioned-actions
         uses: readmeio/rdme@8.1.1
         with:
-          rdme: openapi Work.json --key=rdme_xn8s9hed89640a8daa78461a7306245669d2e256550f1951978092e649be0e38ac7f94 --version=v3.0 --create
+          rdme: openapi Work.json --key=rdme_xn8s9h8421b8691643f839d8a535970ef7383e50f48d46412b9f5cd8c83c8368d37481 --version=v3.0 --create
 
  
          # Run GitHub Action to sync OpenAPI file at [path-to-file.json]
@@ -28,4 +28,4 @@ jobs:
         # Docs: https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions#example-using-versioned-actions
         uses: readmeio/rdme@8.1.1
         with:
-          rdme: openapi cvixapi.json --key=rdme_xn8s9hed89640a8daa78461a7306245669d2e256550f1951978092e649be0e38ac7f94 --version=v3.0 --create
+          rdme: openapi cvixapi.json --key=rdme_xn8s9h8421b8691643f839d8a535970ef7383e50f48d46412b9f5cd8c83c8368d37481 --version=v3.0 --create
